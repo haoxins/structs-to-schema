@@ -57,12 +57,12 @@ func ParseAvroElements(t reflect.Type) []Element {
 		field := t.Field(i)
 		if field.Type.Kind() != reflect.Struct {
 			elements = append(elements, Element{
-				Name: field.Name,
+				Name: field.Tag.Get("avro"),
 				Type: castTypeToAvro(field.Type.Kind()),
 			})
 		} else {
 			elements = append(elements, Element{
-				Name:     field.Name,
+				Name:     field.Tag.Get("avro"),
 				Type:     AvroTypeRecord,
 				Children: ParseAvroElements(field.Type),
 			})

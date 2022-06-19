@@ -33,6 +33,6 @@ var _ = Describe("Test Avro", func() {
 	It("Parse Avro should work", func() {
 		schema, err := ParseAvro(Event{})
 		Expect(err).To(BeNil())
-		Expect(schema).To(Equal(`{"name":"Event","type":"record","fields":[{"name":"ClientIP","type":"string"},{"name":"SessionId","type":"string"},{"name":"Payload","type":"record","fields":[{"name":"Type","type":"string"},{"name":"Target","type":"record","fields":[{"name":"Type","type":"string"},{"name":"TagName","type":"string"},{"name":"TextContent","type":"string"},{"name":"Link","type":"string"}]},{"name":"Position","type":"record","fields":[{"name":"PageX","type":"int"},{"name":"PageY","type":"int"}]}]}]}`))
+		Expect(schema).To(Equal(`{"name":"Event","type":"record","fields":[{"name":"clientIP","type":"string"},{"name":"sessionId","type":"string"},{"name":"payload","type":"record","fields":[{"name":"type","type":"string"},{"name":"target","type":"record","fields":[{"name":"type","type":"string"},{"name":"tagName","type":"string"},{"name":"textContent","type":"string"},{"name":"link","type":"string"}]},{"name":"position","type":"record","fields":[{"name":"pageX","type":"int"},{"name":"pageY","type":"int"}]}]}]}`))
 	})
 })
