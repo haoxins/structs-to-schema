@@ -11,6 +11,8 @@ const (
 	AvroTypeBool   = "boolean"
 	AvroTypeInt32  = "int"
 	AvroTypeInt64  = "long"
+	AvroTypeFloat  = "float"
+	AvroTypeDouble = "double"
 )
 
 type Element struct {
@@ -74,15 +76,18 @@ func ParseAvroElements(t reflect.Type) []Element {
 
 func castTypeToAvro(k reflect.Kind) string {
 	switch k {
-	case reflect.String:
-		return AvroTypeString
 	case reflect.Bool:
 		return AvroTypeBool
+	case reflect.Float32:
+		return AvroTypeFloat
+	case reflect.Float64:
+		return AvroTypeDouble
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32:
 		return AvroTypeInt32
 	case reflect.Int64:
 		return AvroTypeInt64
-	// TODO: Add more types
+	case reflect.String:
+		return AvroTypeString
 	default:
 		panic(errors.New("Invalid type"))
 	}
